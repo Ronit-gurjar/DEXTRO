@@ -1,0 +1,7 @@
+body{
+    background-color: beige;
+    border-radius: 20px;
+    width: 500px;
+    height: 500px;
+    box-shadow: 0 0 0 20px black;
+}
