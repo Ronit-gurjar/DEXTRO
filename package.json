@@ -1,0 +1,24 @@
+{
+  "name": "react-chrome-extension-boilerplate-1",
+  "version": "1.0.0",
+  "description": "Simple Chrome extension Boilerplate For React.js ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate.git"
+  },
+  "keywords": [
+    "React",
+    "Chrome-extension",
+    "Chrome-boilerplate"
+  ],
+  "author": "Ronit Gurjar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate/issues"
+  },
+  "homepage": "https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme"
+}
