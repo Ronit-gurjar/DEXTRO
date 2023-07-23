@@ -4,6 +4,7 @@
   "description": "Simple Chrome extension Boilerplate For React.js ",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
