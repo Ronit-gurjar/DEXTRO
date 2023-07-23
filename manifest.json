@@ -8,7 +8,5 @@
         "16": "images/favicon-16.png",
         "48": "images/favicon-48.png",
         "128": "images/favicon-128.png"
-    },
-
-    "default locale":"en"
+    }
 }
