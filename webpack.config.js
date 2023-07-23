@@ -1,9 +1,12 @@
 const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: 'development',
-    entry: './src/static/index.tsx',
+    entry: {
+        popup: './src/static/popup.tsx'
+    },
     module: {
         rules: [
             {
@@ -26,6 +29,10 @@ module.exports = {
             }
         ]
         }),
+        new HtmlPlugin({
+            title:'React Chrome-ext Boilerplate',
+            filename: 'popup.html'
+        })
     ],
     resolve: {
         extensions: ['.tsx', '.js', '.ts']
