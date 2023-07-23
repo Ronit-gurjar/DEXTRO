@@ -6,7 +6,7 @@ module.exports = {
     mode: 'development',
     devtool: 'cheap-module-source-map',
     entry: {
-        popup: path.resolve('./src/static/index.tsx')
+        index: [path.resolve('./src/static/index.tsx'),path.resolve('./src/static/index.css')]
     },
     module: {
         rules: [
@@ -15,6 +15,10 @@ module.exports = {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
             },
+            {
+                use: ['style-loader', 'css-loader'],
+                test: /\.css?$/,
+            }
         ]
     },
     "plugins": [
@@ -26,6 +30,10 @@ module.exports = {
             },
             {
                 from: path.resolve('src/images'),
+                to: path.resolve('dist')
+            },
+            {
+                from: path.resolve('src/static/index.css'),
                 to: path.resolve('dist')
             }
         ]
