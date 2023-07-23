@@ -15,10 +15,16 @@ module.exports = {
     },
     "plugins": [
         new CopyPlugin({
-            patterns: [{
-                from: path.resolve('src/static'),
+            patterns: [
+            {
+                from: path.resolve('src/static/manifest.json'),
                 to: path.resolve('dist')
-            }]
+            },
+            {
+                from: path.resolve('src/images'),
+                to: path.resolve('dist')
+            }
+        ]
         }),
     ],
     resolve: {
