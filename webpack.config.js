@@ -31,13 +31,14 @@ module.exports = {
         }),
         new HtmlPlugin({
             title:'React Chrome-ext Boilerplate',
-            filename: 'popup.html'
+            filename: 'popup.html',
+            chunks: ['popup']
         })
     ],
     resolve: {
         extensions: ['.tsx', '.js', '.ts']
     },
     output: {
-        filename: 'index.js',
+        filename: '[name].js',
     }
 }
