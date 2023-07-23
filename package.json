@@ -2,7 +2,7 @@
   "name": "react-chrome-extension-boilerplate-1",
   "version": "1.0.0",
   "description": "Simple Chrome extension Boilerplate For React.js ",
-  "main": "popup.js",
+  "main": "index.js",
   "scripts": {
     "watch": "webpack --watch --progress --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
