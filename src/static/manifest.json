@@ -11,6 +11,6 @@
     },
     "action":{
         "default_title": "Click Me!",
-        "default_popup": "index.html"
+        "default_popup": "popup.html"
     }
 }

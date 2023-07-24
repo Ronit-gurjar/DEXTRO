@@ -6,7 +6,7 @@ module.exports = {
     mode: 'development',
     devtool: 'cheap-module-source-map',
     entry: {
-        index: [path.resolve('./src/static/index.tsx'),path.resolve('./src/static/index.css')]
+        popup:path.resolve('./src/static/popup.tsx'),
     },
     module: {
         rules: [
@@ -33,15 +33,15 @@ module.exports = {
                 to: path.resolve('dist')
             },
             {
-                from: path.resolve('src/static/index.css'),
+                from: path.resolve('src/static/popup.css'),
                 to: path.resolve('dist')
             }
         ]
         }),
         new HtmlPlugin({
             title:'React Chrome-ext Boilerplate',
-            filename: 'index.html',
-            chunks: ['index']
+            filename: 'popup.html',
+            chunks: ['popup']
         })
     ],
     resolve: {
