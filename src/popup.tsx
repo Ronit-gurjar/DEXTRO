@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import './assets/popup.css'
+import './assets/tailwind.css'
 
 const index = (
   <div>

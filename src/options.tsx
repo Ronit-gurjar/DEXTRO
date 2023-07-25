@@ -1,9 +1,18 @@
 import React from 'react'
+import {createRoot} from 'react-dom/client';
+import './assets/tailwind.css'
 
 const options = () => {
   return (
-    <div>options</div>
+    <div>
+        <h1 className="text-3xl font-bold underline">
+            options
+        </h1>
+    </div>
   )
 }
 
-export default options
+const container = document.createElement('div')
+document.body.appendChild(container)
+const root = createRoot(container)
+root.render(options)
