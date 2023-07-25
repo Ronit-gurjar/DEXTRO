@@ -9,6 +9,7 @@ module.exports = {
     devtool: 'cheap-module-source-map',
     entry: {
         popup:path.resolve('./src/popup.tsx'),
+        options:path.resolve('./src/options.tsx'),
     },
     module: {
         rules: [
@@ -46,11 +47,10 @@ module.exports = {
             }
         ]
         }),
-        new HtmlPlugin({
-            title:'React Chrome-ext Boilerplate',
-            filename: 'popup.html',
-            chunks: ['popup']
-        })
+        ...getHtmlPlugins([
+            'popup',
+            'options',
+        ])
     ],
     resolve: {
         extensions: ['.tsx', '.ts', '.jsx', '.js']
@@ -58,4 +58,12 @@ module.exports = {
     output: {
         filename: '[name].js',
     }
+}
+
+function getHtmlPlugins(chunks) {
+    return chunks.map(chunk => new HtmlPlugin({
+        title: 'React Chrome-ext Boilerplate',
+        filename: `${chunk}.html`,
+        chunks: [chunk]
+    }))
 }
