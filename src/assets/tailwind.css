@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 body{
-    background-color: beige;
+    background-color:rgba(46, 53, 66, 0.895);
+    background-image: url("../static/images/background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     width: 400px;
     height: 500px;
     text-align: center;
-    box-shadow: 0 0 30px 2px black;
+}
+.container{
+    position: relative;
+    top: 150px;
 }
