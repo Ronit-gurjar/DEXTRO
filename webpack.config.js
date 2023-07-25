@@ -6,7 +6,7 @@ module.exports = {
     mode: 'development',
     devtool: 'cheap-module-source-map',
     entry: {
-        popup:path.resolve('./src/static/popup.tsx'),
+        popup:path.resolve('./src/assets/popup.tsx'),
     },
     module: {
         rules: [
@@ -29,11 +29,11 @@ module.exports = {
                 to: path.resolve('dist')
             },
             {
-                from: path.resolve('src/images'),
+                from: path.resolve('src//static/images'),
                 to: path.resolve('dist')
             },
             {
-                from: path.resolve('src/static/popup.css'),
+                from: path.resolve('src/assets/popup.css'),
                 to: path.resolve('dist')
             }
         ]
@@ -45,7 +45,7 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['.tsx', '.js', '.ts']
+        extensions: ['.tsx', '.ts', '.jsx', '.js']
     },
     output: {
         filename: '[name].js',
