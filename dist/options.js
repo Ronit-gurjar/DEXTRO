@@ -34465,9 +34465,9 @@ module.exports = styleTagTransform;
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!***********************!*\
-  !*** ./src/popup.tsx ***!
-  \***********************/
+/*!*************************!*\
+  !*** ./src/options.tsx ***!
+  \*************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -34476,16 +34476,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const index = (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { className: "text-3xl font-bold underline" }, "Hello World!"),
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Enjoy building your Dream extension \uD83D\uDE01")));
+const options = () => {
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { className: "text-3xl font-bold underline" }, "options")));
+};
 const container = document.createElement('div');
 document.body.appendChild(container);
 const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
-root.render(index);
+root.render(options);
 
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=popup.js.map
+//# sourceMappingURL=options.js.map
