@@ -1,12 +1,14 @@
 const path = require('path')
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin')
 const HtmlPlugin = require('html-webpack-plugin')
+const tailwindcss = require('tailwindcss')
+const autoprefixer = require('autoprefixer')
 
 module.exports = {
     mode: 'development',
     devtool: 'cheap-module-source-map',
     entry: {
-        popup:path.resolve('./src/assets/popup.tsx'),
+        popup:path.resolve('./src/popup.tsx'),
     },
     module: {
         rules: [
@@ -16,7 +18,17 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader',
+                        {
+                            loader: 'postcss-loader',
+                            options:{
+                                postcssOptions: {
+                                    idents:'postcss',
+                                    plugins: [tailwindcss, autoprefixer],
+                                },
+                            }
+                        }
+                     ],
                 test: /\.css?$/,
             }
         ]
@@ -25,11 +37,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [
             {
-                from: path.resolve('src/static/manifest.json'),
-                to: path.resolve('dist')
-            },
-            {
-                from: path.resolve('src//static/images'),
+                from: path.resolve('src/static'),
                 to: path.resolve('dist')
             },
             {
