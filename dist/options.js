@@ -34476,10 +34476,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const options = () => {
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { className: "text-3xl font-bold underline" }, "options")));
-};
+const options = (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { className: "text-3xl font-bold underline" }, "options")));
 const container = document.createElement('div');
 document.body.appendChild(container);
 const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
