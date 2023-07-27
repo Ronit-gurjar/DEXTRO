@@ -13,6 +13,9 @@
         "default_title": "Click Me!",
         "default_popup": "popup.html"
     },
+    "background":{
+        "service_worker": "background.js"
+    },
     "options_page": "options.html",
     "permissions": [
         "storage"
