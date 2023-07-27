@@ -1,0 +1,1 @@
+{"version":3,"file":"background.js","mappings":";;;;;AAAA;AACA;AACA","sources":["webpack://react-chrome-extension-boilerplate-1/./src/scripts/background.ts"],"sourcesContent":["chrome.runtime.onInstalled.addListener(() => {\n    console.log(\"Extenstion successfully installed\");\n});\n"],"names":[],"sourceRoot":""}
