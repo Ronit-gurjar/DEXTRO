@@ -43,7 +43,7 @@ module.exports = {
                 to: path.resolve('dist')
             },
             {
-                from: path.resolve('src/assets/tailwind.css'),
+                from: path.resolve('src/assets'),
                 to: path.resolve('dist')
             }
         ]
