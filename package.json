@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Simple Chrome extension Boilerplate For React.js ",
   "main": "popup.js",
-  "bin": "./src/bin/script.js",
   "scripts": {
     "start": "node src/bin/script.js",
     "watch": "webpack --watch --progress --config webpack.config.common.js",
