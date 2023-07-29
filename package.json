@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Simple Chrome extension Boilerplate For React.js ",
   "main": "popup.js",
+  "bin": "./src/bin/script.js",
   "scripts": {
     "watch": "webpack --watch --progress --config webpack.config.common.js",
     "test": "echo \"Error: no test specified\" && exit 1"
