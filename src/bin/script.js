@@ -1,18 +1,18 @@
 // Not to be Altered!
 
-import inquirer from 'inquirer';
+const inquirer = require('inquirer');
 
 inquirer
   .prompt([
     /* Pass your questions in here */
-  ])
-  .then((answers) => {
-    // Use user feedback for... whatever!!
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
+    {
+        type:"list",
+        message:"Would you like to use a framework?:",
+        name:"framework",
+        choices:["react","vanilla"]
     }
+  ])
+  .then(answers => {
+    // Use user feedback for... whatever!!
+    console.log(answers);
   });
