@@ -5,6 +5,7 @@
   "main": "popup.js",
   "bin": "./src/bin/script.js",
   "scripts": {
+    "start": "node src/bin/script.js",
     "watch": "webpack --watch --progress --config webpack.config.common.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,7 +25,7 @@
   },
   "homepage": "https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme",
   "dependencies": {
-    "inquirer": "^9.2.9",
+    "inquirer": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ts-loader": "^9.4.4",
