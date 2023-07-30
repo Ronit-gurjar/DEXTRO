@@ -9,6 +9,17 @@ const QUESTIONS = [
     name:"project_name"
   },
   {
+    type:"confirm",
+    message:"Have you created a GitHub repo for this project?",
+    name:"repoGithub"
+  },
+  {
+    type:"input",
+    message:"GitHub Repo link(https):",
+    name:"repo",
+    when: (answers) => answers.repoGithub === 'true'
+  },
+  {
       type:"list",
       message:"Would you like to use a framework?:",
       name:"framework",
