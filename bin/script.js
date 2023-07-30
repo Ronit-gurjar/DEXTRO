@@ -1,6 +1,13 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
 
+const repoValidator = async (input) => {
+  if (!input.includes("https://github.com/")) {
+     return 'Invalid repo';
+  }
+  return true;
+};
+
 const QUESTIONS = [
   {
     type:"input",
@@ -17,6 +24,7 @@ const QUESTIONS = [
     type:"input",
     message:"GitHub Repo link(https):",
     name:"repo",
+    validate: repoValidator,
     when(answers) {
       return answers.repoGithub;
     },
