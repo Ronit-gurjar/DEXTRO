@@ -64,6 +64,31 @@ inquirer
     const frameworkChoice = answers['framework']; //string
     const variant = answers['variant']; //string
     const wantTailwind = answers['tailwind']; //boolean
+    function projectChoice(){
+      if (frameworkChoice === "react") {
+        if (variant ==="Typescript") {
+          if (wantTailwind ==="true") {
+            return 'react-ts-tailwind';
+          }
+          else{
+            return 'react-ts';
+          }}
+        else{
+          if (wantTailwind ==="true") {
+            return 'react-js-tailwind';
+          }
+          else{
+            return 'react-js';
+          }
+        }
+        }
+      else{
+        return 'vanilla';
+      }
+      }
+    const templatePath = `${__dirname}/templates/${projectChoice()}`;
+    
+    //Console Print
     function style(){
       if (wantTailwind === "true") {
        return ' & tailwindCSS';
@@ -73,4 +98,5 @@ inquirer
       }
     }
     console.log( "creating "+ projectName +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style());
+    console.log("at -> "+templatePath)
   });
