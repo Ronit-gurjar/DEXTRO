@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
+const CURR_DIR = process.cwd();
+const fs = require('fs');
 
 const repoValidator = async (input) => {
   if (!input.includes("https://github.com/")) {
