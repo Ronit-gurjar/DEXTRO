@@ -59,5 +59,11 @@ const QUESTIONS = [
 inquirer
   .prompt(QUESTIONS)
   .then(answers => {
+    const projectName = answers['project_name']; //string
+    const repoUrl = answers['repo']; //string
+    const frameworkChoice = answers['framework']; //string
+    const variant = answers['variant']; //string
+    const wantTailwind = answers['tailwind']; //boolean
+
     console.log(answers);
   });
