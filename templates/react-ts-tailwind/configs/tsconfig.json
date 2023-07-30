@@ -6,6 +6,6 @@
         "moduleResolution": "node",
         "esModuleInterop": true,
     },
-    "include": ["../src/app/**/*.ts", "../src/app/scripts/*.ts"],
+    "include": ["src/app/**/*.ts", "src/app/scripts/*.ts"],
     "exclude": ["../node_modules"]
 }
