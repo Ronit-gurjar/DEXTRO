@@ -64,6 +64,13 @@ inquirer
     const frameworkChoice = answers['framework']; //string
     const variant = answers['variant']; //string
     const wantTailwind = answers['tailwind']; //boolean
-
-    console.log(answers);
+    function style(){
+      if (wantTailwind === "true") {
+       return ' & tailwindCSS';
+      }
+      else{
+        return ' & no tailwindCSS';
+      }
+    }
+    console.log( "creating "+ projectName +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style());
   });
