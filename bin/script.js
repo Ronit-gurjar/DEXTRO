@@ -13,7 +13,11 @@ const QUESTIONS = [
     type:"input",
     message:"Project name:",
     default:"Chrome-Ext-project",
-    name:"project_name"
+    name:"project_name",
+    validate: function (input) {
+      if (/^([A-Za-z\-\_\d])+$/.test(input)) return true;
+      else return 'Project name may only include letters, numbers, underscores and hashes.';
+    }
   },
   {
     type:"confirm",
