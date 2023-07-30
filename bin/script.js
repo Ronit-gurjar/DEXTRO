@@ -17,7 +17,9 @@ const QUESTIONS = [
     type:"input",
     message:"GitHub Repo link(https):",
     name:"repo",
-    when: (answers) => answers.repoGithub === 'true'
+    when(answers) {
+      return answers.repoGithub;
+    },
   },
   {
       type:"list",
