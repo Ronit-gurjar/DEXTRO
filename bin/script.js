@@ -87,6 +87,9 @@ inquirer
       }
       }
     const templatePath = `${__dirname}/templates/${projectChoice()}`;
+
+    fs.mkdirSync(`${CURR_DIR}/${projectName}`); // make directory with project name in cwd
+    createDirectoryContents(templatePath, projectName); // copy contents of templatepath to projectName
     
     //Console Print
     function style(){
@@ -100,3 +103,21 @@ inquirer
     console.log( "creating "+ projectName +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style());
     console.log("at -> "+templatePath)
   });
+
+  function createDirectoryContents (templatePath, newProjectPath) {
+    const filesToCreate = fs.readdirSync(templatePath);
+  
+    filesToCreate.forEach(file => {
+      const origFilePath = `${templatePath}/${file}`;
+      
+      // get stats about the current file
+      const stats = fs.statSync(origFilePath);
+  
+      if (stats.isFile()) {
+        const contents = fs.readFileSync(origFilePath, 'utf8');
+        
+        const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
+        fs.writeFileSync(writePath, contents, 'utf8');
+      }
+    });
+  }
