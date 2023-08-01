@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
-const chalk = require('chalk')
+let chalk;
+async function initializeChalk() {
+  chalk = (await import('chalk')).default;
+}
+initializeChalk();
 const CURR_DIR = process.cwd();
 const fs = require('fs');
 
@@ -101,7 +105,7 @@ inquirer
         return ' & no tailwindCSS';
       }
     }
-    console.log( "creating "+ projectName +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style());
+    console.log(chalk.black.bgGreen.bold( ">> Creating "+ chalk.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style()));
     console.log("at -> "+templatePath)
   });
 
