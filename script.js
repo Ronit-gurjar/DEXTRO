@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
+const chalk = require('chalk')
 const CURR_DIR = process.cwd();
 const fs = require('fs');
 
