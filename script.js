@@ -1,10 +1,5 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
-let chalk;
-async function initializeChalk() {
-  chalk = (await import('chalk')).default;
-}
-initializeChalk();
 const CURR_DIR = process.cwd();
 const fs = require('fs');
 const path = require('path');
