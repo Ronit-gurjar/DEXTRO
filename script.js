@@ -162,7 +162,7 @@ inquirer
         return ' & no tailwindCSS';
       }
     }
-    console.log(kleur.black.bgGreen.bold( ">> Creating "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
+    console.log(kleur.bgGreen( ">> Creating "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
     console.log("at -> "+templatePath)
   });
 
