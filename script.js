@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const inquirer = require('inquirer');
 const CURR_DIR = process.cwd();
+const kleur = require('kleur');
 const fs = require('fs');
 const path = require('path');
 
@@ -10,6 +11,55 @@ const repoValidator = async (input) => {
   }
   return true;
 };
+
+const QUESTIONS = [
+  {
+    type:"input",
+    message:"Your name:",
+    name:"author_name",
+  },
+  {
+    type:"input",
+    message:"Project name:",
+    default:"Chrome-Ext-project",
+    name:"project_name",
+    validate: function (input) {
+      if (/^([A-Za-z\-\_\d])+$/.test(input)) return true;
+      else return 'Project name may only include letters, numbers, underscores and hashes.';
+    }
+  },
+  {
+    type:"confirm",
+    message:"Have you created a GitHub repo for this project?",
+    name:"repoGithub"
+  },
+  {
+    type:"input",
+    message:"GitHub Repo link(https):",
+    name:"repo",
+    validate: repoValidator,
+    when(answers) {
+      return answers.repoGithub;
+    }
+  },
+  {
+      type:"list",
+      message:"Would you like to use a framework?:",
+      name:"framework",
+      choices:["react","vanilla"]
+  },
+  {
+    type:"list",
+    message:"which variant would you prefer?:",
+    name:"variant",
+    choices:["Typescript","Javascript"]
+  },
+  {
+    type:"confirm",
+    message:"would you like to use tailwind css?:",
+    name:"tailwind"
+  }
+]
 
 // Create Package.Json for selected project   
 function createPackageJson(templatePath, projectName, repoUrl, projectAuthor) {
@@ -65,56 +115,6 @@ function createPackageJson(templatePath, projectName, repoUrl, projectAuthor) {
   }
 }
 
-const QUESTIONS = [
-  {
-    type:"input",
-    message:"Your name:",
-    name:"author_name",
-  },
-  {
-    type:"input",
-    message:"Project name:",
-    default:"Chrome-Ext-project",
-    name:"project_name",
-    validate: function (input) {
-      if (/^([A-Za-z\-\_\d])+$/.test(input)) return true;
-      else return 'Project name may only include letters, numbers, underscores and hashes.';
-    }
-  },
-  {
-    type:"confirm",
-    message:"Have you created a GitHub repo for this project?",
-    name:"repoGithub"
-  },
-  {
-    type:"input",
-    message:"GitHub Repo link(https):",
-    name:"repo",
-    validate: repoValidator,
-    when(answers) {
-      return answers.repoGithub;
-    }
-  },
-  {
-      type:"list",
-      message:"Would you like to use a framework?:",
-      name:"framework",
-      choices:["react","vanilla"]
-  },
-  {
-    type:"list",
-    message:"which variant would you prefer?:",
-    name:"variant",
-    choices:["Typescript","Javascript"]
-  },
-  {
-    type:"confirm",
-    message:"would you like to use tailwind css?:",
-    name:"tailwind"
-  }
-]
-
-
 
 inquirer
   .prompt(QUESTIONS)
@@ -162,7 +162,7 @@ inquirer
         return ' & no tailwindCSS';
       }
     }
-    console.log(chalk.black.bgGreen.bold( ">> Creating "+ chalk.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + chalk.red(projectAuthor)));
+    console.log(kleur.black.bgGreen.bold( ">> Creating "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
     console.log("at -> "+templatePath)
   });
 
