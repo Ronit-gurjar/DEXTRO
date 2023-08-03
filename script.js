@@ -63,8 +63,7 @@ const QUESTIONS = [
 
 // Create Package.Json for selected project   
 function createPackageJson(templatePath, projectName, repoUrl, projectAuthor) {
-  if (templatePath.includes('react-ts-tailwind')) {
-    const packageJsonPath = path.join(templatePath, projectName, 'package.json');
+    const projectPath = path.join(CURR_DIR, projectName);
     const react_ts_tailwind = {
       "name": {projectName},
       "version": "1.0.0",
@@ -111,8 +110,9 @@ function createPackageJson(templatePath, projectName, repoUrl, projectAuthor) {
         "webpack-cli": "^5.1.4"
       }
     };
-    fs.writeFileSync(packageJsonPath, JSON.stringify(react_ts_tailwind, null, 2))
-  }
+    const packageJsonString = JSON.stringify(react_ts_tailwind, null, 2);
+    const packageJsonPath = projectPath + '/package.json';
+    fs.writeFileSync(packageJsonPath, packageJsonString);
 }
 
 
@@ -148,10 +148,10 @@ inquirer
       }
       }
     const templatePath = `${__dirname}/templates/${projectChoice()}`;
-    createPackageJson(templatePath, projectName, repoUrl, projectAuthor);
 
     fs.mkdirSync(`${CURR_DIR}/${projectName}`); // make directory with project name in cwd
     createDirectoryContents(templatePath, projectName); // copy contents of templatepath to projectName
+    createPackageJson(templatePath, projectName, repoUrl, projectAuthor);
     
     //Console Print
     function style(){
@@ -163,7 +163,7 @@ inquirer
       }
     }
     console.log(kleur.bgGreen( ">> Creating "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
-    console.log("at -> "+templatePath)
+    console.log(kleur.bgCyan("at -> "+templatePath))
   });
 
    
