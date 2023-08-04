@@ -65,7 +65,7 @@ const QUESTIONS = [
 function createPackageJson(templatePath, projectName, repoUrl, projectAuthor) {
     const projectPath = path.join(CURR_DIR, projectName);
     const react_ts_tailwind = {
-      "name": {projectName},
+      "name": projectName,
       "version": "1.0.0",
       "description": "Simple Chrome extension",
       "main": "popup.js",
@@ -75,19 +75,19 @@ function createPackageJson(templatePath, projectName, repoUrl, projectAuthor) {
       },
       "repository": {
         "type": "git",
-        "url": {repoUrl}
+        "url": repoUrl
       },
       "keywords": [
         "React",
         "Chrome-extension",
         "Chrome-boilerplate"
       ],
-      "author": {projectAuthor},
+      "author": projectAuthor,
       "license": "ISC",
       "bugs": {
-        "url": {repoUrl}+"/issues"
+        "url": repoUrl+"/issues"
       },
-      "homepage": {repoUrl}+"#readme",
+      "homepage": repoUrl+"#readme",
       "dependencies": {
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -160,9 +160,8 @@ inquirer
         return ' & no tailwindCSS';
       }
     }
-    console.log(wantTailwind);
     console.log(kleur.bgGreen( ">> Creating "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
-    console.log(kleur.bgCyan("at -> "+templatePath))
+    console.log(kleur.blue("at -> "+templatePath))
   });
 
    
