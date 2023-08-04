@@ -128,22 +128,21 @@ inquirer
     function projectChoice(){
       if (frameworkChoice === "react") {
         if (variant ==="Typescript") {
-          if (wantTailwind ==="true") {
+          if (wantTailwind === true) {
             return 'react-ts-tailwind';
           }
           else{
             return 'react-ts';
           }}
-        else{
-          if (wantTailwind ==="true") {
-            return 'react-js-tailwind';
-          }
-          else{
-            return 'react-js';
-          }
+        else if (variant === 'Javascript') {
+            if (wantTailwind === true) {
+              return 'react-js-tailwind';
+            }
+            else{
+              return 'react-js';
+            }}
         }
-        }
-      else{
+      else if(frameworkChoice === "vanilla"){
         return 'vanilla';
       }
       }
@@ -155,13 +154,13 @@ inquirer
     
     //Console Print
     function style(){
-      if (wantTailwind === "true") {
+      if (templatePath.includes('tailwind')) {
        return ' & tailwindCSS';
-      }
-      else{
+      } else {
         return ' & no tailwindCSS';
       }
     }
+    console.log(wantTailwind);
     console.log(kleur.bgGreen( ">> Creating "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
     console.log(kleur.bgCyan("at -> "+templatePath))
   });
