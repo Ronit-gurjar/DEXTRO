@@ -4,6 +4,7 @@ const CURR_DIR = process.cwd();
 const kleur = require('kleur');
 const fs = require('fs');
 const path = require('path');
+const gradient = require('gradient-string');
 
 const repoValidator = async (input) => {
   if (!input.includes("https://github.com/")) {
@@ -161,7 +162,7 @@ inquirer
       }
     }
     console.log(kleur.bgGreen( ">> Creating "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
-    console.log(kleur.blue("at -> "+templatePath))
+
   });
 
    

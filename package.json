@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme",
   "dependencies": {
+    "gradient-string": "^2.0.2",
     "inquirer": "^8.0.0",
     "kleur": "^4.1.5",
     "react": "^18.2.0",
