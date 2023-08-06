@@ -161,8 +161,18 @@ inquirer
         return ' & no tailwindCSS';
       }
     }
-    console.log(kleur.bgGreen( ">> Creating "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
-
+    console.log(gradient.teen('\n------------------------PROJECT SUCCESSFULLY CREATED------------------------'))
+    console.log(kleur.bgGreen( "Created "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
+    console.log(kleur.blue('Now just perform :'))
+    console.log(`
+    > cd ${projectName}
+    > .code
+    > npm init    
+    `)
+    const text = kleur.bgGreen('Read Docs to know more :');
+    const link = kleur.blue('https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme');
+    console.log(`${text} ${link}`);
+    console.log(gradient.teen('-------------------------------ENJOY BUILDING-------------------------------\n'))
   });
 
    
