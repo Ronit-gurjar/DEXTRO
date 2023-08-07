@@ -166,7 +166,7 @@ inquirer
     console.log(kleur.blue('Now just perform :'))
     console.log(`
     > cd ${projectName}
-    > .code
+    > code .
     > npm init    
     `)
     const text = kleur.bgGreen('Read Docs to know more :');
