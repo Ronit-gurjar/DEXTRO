@@ -167,7 +167,7 @@ inquirer
     console.log(`
     > cd ${projectName}
     > code .
-    > npm init    
+    > npm install  
     `)
     const text = kleur.bgGreen('Read Docs to know more :');
     const link = kleur.blue('https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme');
