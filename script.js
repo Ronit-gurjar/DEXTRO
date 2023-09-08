@@ -124,7 +124,7 @@ inquirer
     const projectAuthor = answers['author_name'] 
     const repoUrl = answers['repo']; 
     const frameworkChoice = answers['framework']; 
-    const variant = answers['variant']; 
+    const variant = answers['variant'];
     const wantTailwind = answers['tailwind']; 
     function projectChoice(){
       if (frameworkChoice === "react") {
@@ -135,27 +135,26 @@ inquirer
           else{
             return 'react-ts';
           }}
-        else if (variant === 'Javascript') {
-            if (wantTailwind === true) {
-              return 'react-js-tailwind';
-            }
-            else{
-              return 'react-js';
-            }}
-        }
-      else if(frameworkChoice === "vanilla"){
+        if (variant ==="Javascript") {
+          if (wantTailwind === true) {
+            return 'react-js-tailwind';
+          }
+          else{
+            return 'react-js';
+          }}
+        else if(frameworkChoice === "vanilla"){
         return 'vanilla';
-      }
-      }
-    const templatePath = `${__dirname}/templates/${projectChoice()}`;
+        }
+      }}
+      const templatePath = `${__dirname}/templates/${projectChoice()}`;
     
-    if (templatePath.includes('react-js' || 'react-js-tailwind')){
-      return console.log(kleur.bgGreen('DEX currently does not support Javascript. Feature will be added in soon.'))
+    if (templatePath.includes('undefined')){
+      return console.log(kleur.bgGreen('DEX currently does not support Javascript. Feature will be added soon.'))
     }else{
     fs.mkdirSync(`${CURR_DIR}/${projectName}`); // make directory with project name in cwd
     createDirectoryContents(templatePath, projectName); // copy contents of templatepath to projectName
     createPackageJson(templatePath, projectName, repoUrl, projectAuthor);
-    }
+    
     //Console OUTPUT
     function style(){
       if (templatePath.includes('tailwind')) {
@@ -176,9 +175,8 @@ inquirer
     const link = kleur.blue('https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme');
     console.log(`${text} ${link}`);
     console.log(gradient.teen('-------------------------------ENJOY BUILDING BRO----------------------------\n'))
-  });
+  }});
 
-   
 function createDirectoryContents (templatePath, newProjectPath) {
   const filesToCreate = fs.readdirSync(templatePath);
 
