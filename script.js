@@ -120,12 +120,12 @@ function createPackageJson(templatePath, projectName, repoUrl, projectAuthor) {
 inquirer
   .prompt(QUESTIONS)
   .then(answers => {
-    const projectName = answers['project_name']; //string
-    const projectAuthor = answers['author_name'] //string
-    const repoUrl = answers['repo']; //string
-    const frameworkChoice = answers['framework']; //string
-    const variant = answers['variant']; //string
-    const wantTailwind = answers['tailwind']; //boolean
+    const projectName = answers['project_name']; 
+    const projectAuthor = answers['author_name'] 
+    const repoUrl = answers['repo']; 
+    const frameworkChoice = answers['framework']; 
+    const variant = answers['variant']; 
+    const wantTailwind = answers['tailwind']; 
     function projectChoice(){
       if (frameworkChoice === "react") {
         if (variant ==="Typescript") {
@@ -153,7 +153,7 @@ inquirer
     createDirectoryContents(templatePath, projectName); // copy contents of templatepath to projectName
     createPackageJson(templatePath, projectName, repoUrl, projectAuthor);
     
-    //Console Print
+    //Console OUTPUT
     function style(){
       if (templatePath.includes('tailwind')) {
        return ' & tailwindCSS';
@@ -172,7 +172,7 @@ inquirer
     const text = kleur.bgGreen('Read Docs to know more :');
     const link = kleur.blue('https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme');
     console.log(`${text} ${link}`);
-    console.log(gradient.teen('-------------------------------ENJOY BUILDING-------------------------------\n'))
+    console.log(gradient.teen('-------------------------------ENJOY BUILDING BRO----------------------------\n'))
   });
 
    
@@ -195,7 +195,6 @@ function createDirectoryContents (templatePath, newProjectPath) {
     } else if (stats.isDirectory()) {
       fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
       
-      // recursive call
       createDirectoryContents(`${templatePath}/${file}`, `${newProjectPath}/${file}`);
     }
   });
