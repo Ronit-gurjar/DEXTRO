@@ -1,12 +1,10 @@
 import React from 'react'
 import {createRoot} from 'react-dom/client';
-import './assets/tailwind.css'
+import '../assets/styles/option.css'
 
 const options = (
     <div>
-        <h1 className="text-3xl font-bold underline">
-            options
-        </h1>
+        <h1>options</h1>
     </div>
 )
 

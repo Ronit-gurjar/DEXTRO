@@ -1,0 +1,12 @@
+body{
+    background-color:rgba(20, 28, 41, 0.941);
+    width: 400px;
+    height: 500px;
+    text-align: center;
+}
+h1{
+    font-size: xxx-large;
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+}

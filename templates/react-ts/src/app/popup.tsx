@@ -1,11 +1,11 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import './assets/tailwind.css'
+import '../assets/styles/popup.css'
 
 const index = (
   <div className="container">
-    <h1 className="text-3xl  text-white font-bold underline">Hello World!</h1>
-    <p className="text-white font-bold">Enjoy building your Dream extension 😁</p>
+    <h1>Hello World!</h1>
+    <p>Enjoy building your Dream extension 😁</p>
   </div>
 )
 
