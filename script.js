@@ -124,7 +124,10 @@ inquirer
     const projectAuthor = answers['author_name'] 
     const repoUrl = answers['repo']; 
     const frameworkChoice = answers['framework']; 
-    const variant = answers['variant']; 
+    const variant = answers['variant'];
+    if (variant === 'Javascript') {
+      return console.log(kleur.bgGreen('DEX currently does not support Javascript. Feature will be added in soon.'))
+    }
     const wantTailwind = answers['tailwind']; 
     function projectChoice(){
       if (frameworkChoice === "react") {
@@ -135,19 +138,13 @@ inquirer
           else{
             return 'react-ts';
           }}
-        else if (variant === 'Javascript') {
-            if (wantTailwind === true) {
-              return 'react-js-tailwind';
-            }
-            else{
-              return 'react-js';
-            }}
-        }
+        //Add JavaScript Support
       else if(frameworkChoice === "vanilla"){
         return 'vanilla';
       }
-      }
-    const templatePath = `${__dirname}/templates/${projectChoice()}`;
+      }}
+      const templatePath = `${__dirname}/templates/${projectChoice()}`;
+   
     
     if (templatePath.includes('react-js' || 'react-js-tailwind')){
       return console.log(kleur.bgGreen('DEX currently does not support Javascript. Feature will be added in soon.'))
