@@ -53,7 +53,7 @@ const QUESTIONS = [
     type:"list",
     message:"which variant would you prefer?:",
     name:"variant",
-    choices:["Typescript","Javascript"]
+    choices:["Typescript","Javascript"+kleur.red("(currently not supported!)")]
   },
   {
     type:"confirm",
@@ -148,11 +148,14 @@ inquirer
       }
       }
     const templatePath = `${__dirname}/templates/${projectChoice()}`;
-
+    
+    if (templatePath.includes('react-js' || 'react-js-tailwind')){
+      return console.log(kleur.bgGreen('DEX currently does not support Javascript. Feature will be added in soon.'))
+    }else{
     fs.mkdirSync(`${CURR_DIR}/${projectName}`); // make directory with project name in cwd
     createDirectoryContents(templatePath, projectName); // copy contents of templatepath to projectName
     createPackageJson(templatePath, projectName, repoUrl, projectAuthor);
-    
+    }
     //Console OUTPUT
     function style(){
       if (templatePath.includes('tailwind')) {
@@ -162,7 +165,7 @@ inquirer
       }
     }
     console.log(gradient.teen('\n------------------------PROJECT SUCCESSFULLY CREATED------------------------'))
-    console.log(kleur.bgGreen( "Created "+ kleur.red(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.red(projectAuthor)));
+    console.log(kleur.bgGreen( "Created "+ kleur.yellow(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.yellow(projectAuthor)));
     console.log(kleur.blue('Now just perform :'))
     console.log(`
     > cd ${projectName}
