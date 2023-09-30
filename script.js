@@ -53,12 +53,18 @@ const QUESTIONS = [
     type:"list",
     message:"which variant would you prefer?:",
     name:"variant",
-    choices:["Typescript","Javascript"+kleur.red("(currently not supported!)")]
+    choices:["Typescript","Javascript"+kleur.red("(currently not supported!)")],
+    when(answers) {
+      return answers.framework.react;
+    }
   },
   {
     type:"confirm",
     message:"would you like to use tailwind css?:",
-    name:"tailwind"
+    name:"tailwind",
+    when(answers) {
+      return answers.framework.react;
+    }
   }
 ]
 
@@ -135,17 +141,20 @@ inquirer
           else{
             return 'react-ts';
           }}
-        if (variant ==="Javascript") {
+        else if (variant ==="Javascript") {
           if (wantTailwind === true) {
             return 'react-js-tailwind';
           }
           else{
             return 'react-js';
-          }}
-        else if(frameworkChoice === "vanilla"){
+          }}}
+      else if(frameworkChoice === "vanilla"){
         return 'vanilla';
-        }
-      }}
+      }
+      else{
+        return;
+      }
+      }
       const templatePath = `${__dirname}/templates/${projectChoice()}`;
     
     if (templatePath.includes('undefined')){

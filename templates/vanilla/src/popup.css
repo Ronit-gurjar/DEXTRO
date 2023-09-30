@@ -1,0 +1,19 @@
+body{
+    background-color:rgba(20, 28, 41, 0.941);
+    background-image: url("./background.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 400px;
+    height: 500px;
+    text-align: center;
+}
+.container{
+    position: relative;
+    top: 150px;
+}
+h1{
+    color: white;
+    text-decoration: underline;
+    font-size: xx-large;
+}

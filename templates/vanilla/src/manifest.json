@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "My-Chrome-Extension",
+    "description":"My-Chrome-Extension",
+    "version": "1.0.0",
+
+    "icons":{
+        "128": "favicon128.png",
+        "48": "favicon48.png",
+        "16": "favicon16.png"
+    },
+    "action":{
+        "default_icon":"favicon16.png",
+        "default_title": "right click to view options",
+        "default_popup": "popup.html"
+    },
+    "background":{
+        "service_worker": "background.js"
+    },
+    "options_page": "options.html",
+    "permissions": [
+        "storage"
+      ]
+}
