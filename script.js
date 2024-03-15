@@ -39,37 +39,32 @@ const QUESTIONS = [
     message:"GitHub Repo link(https):",
     name:"repo",
     validate: repoValidator,
-    when(answers) {
-      return answers.repoGithub;
-    }
+    when: (answers) => answers.repoGithub
   },
   {
       type:"list",
       message:"Would you like to use a framework?:",
       name:"framework",
-      choices:["react","vanilla"]
+      choices:["React","Vanilla"]
   },
   {
     type:"list",
-    message:"which variant would you prefer?:",
+    message:"Would you prefer Typescript or Javascript?:",
+    default:"Typescript",
     name:"variant",
     choices:["Typescript","Javascript"+kleur.red("(currently not supported!)")],
-    when(answers) {
-      return answers.framework.react;
-    }
+    when: (answers) => answers.framework === 'React'
   },
   {
     type:"confirm",
     message:"would you like to use tailwind css?:",
     name:"tailwind",
-    when(answers) {
-      return answers.framework.react;
-    }
+    when: (answers) => answers.framework === 'React'
   }
 ]
 
 // Create Package.Json for selected project   
-function createPackageJson(templatePath, projectName, repoUrl, projectAuthor) {
+function createPackageJson(projectName, repoUrl, projectAuthor) {
     const projectPath = path.join(CURR_DIR, projectName);
     const react_ts_tailwind = {
       "name": projectName,
@@ -131,81 +126,87 @@ inquirer
     const repoUrl = answers['repo']; 
     const frameworkChoice = answers['framework']; 
     const variant = answers['variant'];
-    const wantTailwind = answers['tailwind']; 
-    function projectChoice(){
-      if (frameworkChoice === "react") {
-        if (variant ==="Typescript") {
-          if (wantTailwind === true) {
-            return 'react-ts-tailwind';
-          }
-          else{
-            return 'react-ts';
-          }}
-        else if (variant ==="Javascript") {
-          if (wantTailwind === true) {
-            return 'react-js-tailwind';
-          }
-          else{
-            return 'react-js';
-          }}}
-      else if(frameworkChoice === "vanilla"){
-        return 'vanilla';
-      }
-      else{
-        return;
-      }
-      }
-      const templatePath = `${__dirname}/templates/${projectChoice()}`;
+    const wantTailwind = answers['tailwind'];
+
+    const combination = `${frameworkChoice}-${variant}-${wantTailwind}`;
+    console.log(combination) 
     
-    if (templatePath.includes('undefined')){
-      return console.log(kleur.bgGreen('DEX currently does not support Javascript. Feature will be added soon.'))
-    }else{
-    fs.mkdirSync(`${CURR_DIR}/${projectName}`); // make directory with project name in cwd
-    createDirectoryContents(templatePath, projectName); // copy contents of templatepath to projectName
-    createPackageJson(templatePath, projectName, repoUrl, projectAuthor);
+  //   //Generating project-specifications
+  //   function projectChoice(){
+  //     if (frameworkChoice === "react") {
+  //       if (variant ==="Typescript") {
+  //         if (wantTailwind === true) {
+  //           return 'react-ts-tailwind';
+  //         }
+  //         else{
+  //           return 'react-ts';
+  //         }}
+  //       else if (variant ==="Javascript") {
+  //         if (wantTailwind === true) {
+  //           return 'react-js-tailwind';
+  //         }
+  //         else{
+  //           return 'react-js';
+  //         }}}
+  //     else if(frameworkChoice === "vanilla"){
+  //       return 'vanilla';
+  //     }
+  //     else{
+  //       return;
+  //     }
+  //     }
+  //     const templatePath = `${__dirname}/templates/${projectChoice()}`;
     
-    //Console OUTPUT
-    function style(){
-      if (templatePath.includes('tailwind')) {
-       return ' & tailwindCSS';
-      } else {
-        return ' & no tailwindCSS';
-      }
-    }
-    console.log(gradient.teen('\n------------------------PROJECT SUCCESSFULLY CREATED------------------------'))
-    console.log(kleur.bgGreen( "Created "+ kleur.yellow(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.yellow(projectAuthor)));
-    console.log(kleur.blue('Now just perform :'))
-    console.log(`
-    > cd ${projectName}
-    > code .
-    > npm install  
-    `)
-    const text = kleur.bgGreen('Read Docs to know more :');
-    const link = kleur.blue('https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme');
-    console.log(`${text} ${link}`);
-    console.log(gradient.teen('-------------------------------ENJOY BUILDING BRO----------------------------\n'))
-  }});
-
-function createDirectoryContents (templatePath, newProjectPath) {
-  const filesToCreate = fs.readdirSync(templatePath);
-
-  filesToCreate.forEach(file => {
-    const origFilePath = `${templatePath}/${file}`;
+  //   if (templatePath.includes('undefined')){
+  //     return console.log(kleur.bgGreen('DEXTRO currently does not support Javascript 😅. Feature will be added soon.'))
+  //   }else{
+  //   fs.mkdirSync(`${CURR_DIR}/${projectName}`); // make directory with project name in cwd
+  //   createDirectoryContents(templatePath, projectName); // copy contents of templatepath to projectName
+  //   createPackageJson(templatePath, projectName, repoUrl, projectAuthor);
     
-    // get stats about the current file
-    const stats = fs.statSync(origFilePath);
+  //   //terminal OUTPUT
+  //   function style(){
+  //     if (templatePath.includes('tailwind')) {
+  //      return ' & tailwindCSS';
+  //     } else {
+  //       return ' & no tailwindCSS';
+  //     }
+  //   }
+  //   console.log(gradient.teen('\n------------------------PROJECT SUCCESSFULLY CREATED------------------------'))
+  //   console.log(kleur.bgGreen( "Created "+ kleur.yellow(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.yellow(projectAuthor)));
+  //   console.log(kleur.blue('Now just perform :'))
+  //   console.log(`
+  //   > cd ${projectName}
+  //   > code .
+  //   > npm install  
+  //   `)
+  //   const text = kleur.bgGreen('Read Docs to know more :');
+  //   const link = kleur.blue('https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme');
+  //   console.log(`${text} ${link}`);
+  //   console.log(gradient.teen('-------------------------------ENJOY BUILDING BRO----------------------------\n'))
+  // }
+});
 
-    if (stats.isFile()) {
-      const contents = fs.readFileSync(origFilePath, 'utf8');
+// function createDirectoryContents (templatePath, newProjectPath) {
+//   const filesToCreate = fs.readdirSync(templatePath);
 
-      if (file === '.npmignore') file = '.gitignore';
+//   filesToCreate.forEach(file => {
+//     const origFilePath = `${templatePath}/${file}`;
+    
+//     // get stats about the current file
+//     const stats = fs.statSync(origFilePath);
+
+//     if (stats.isFile()) {
+//       const contents = fs.readFileSync(origFilePath, 'utf8');
+
+//       if (file === '.npmignore') file = '.gitignore';
       
-      const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
-      fs.writeFileSync(writePath, contents, 'utf8');
-    } else if (stats.isDirectory()) {
-      fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
+//       const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
+//       fs.writeFileSync(writePath, contents, 'utf8');
+//     } else if (stats.isDirectory()) {
+//       fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
       
-      createDirectoryContents(`${templatePath}/${file}`, `${newProjectPath}/${file}`);
-    }
-  });
-}
+//       createDirectoryContents(`${templatePath}/${file}`, `${newProjectPath}/${file}`);
+//     }
+//   });
+// }
