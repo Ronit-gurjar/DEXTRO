@@ -72,7 +72,7 @@ function createPackageJson(projectName, repoUrl, projectAuthor) {
       "description": "Simple Chrome extension",
       "main": "popup.js",
       "scripts": {
-        "watch": "webpack --watch --progress --config webpack.config.js",
+        "dev": "webpack --watch --progress --config webpack.config.js",
         "test": "echo \"Error: no test specified\" && exit 1"
       },
       "repository": {
@@ -173,14 +173,15 @@ inquirer
       }
     }
     console.log(gradient.teen('\n------------------------PROJECT SUCCESSFULLY CREATED------------------------'))
-    console.log(kleur.bgGreen( "Created "+ kleur.yellow(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.yellow(projectAuthor)));
+    console.log(kleur.bgGreen().bold().red( "Created "+ kleur.yellow(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.yellow(projectAuthor)));
     console.log(kleur.blue('Now just perform :'))
     console.log(`
     > cd ${projectName}
     > code .
-    > npm install  
+    > npm install
+    > npm run dev
     `)
-    const text = kleur.bgGreen('Read Docs to know more :');
+    const text = kleur.bgGreen().bold().red('Read Docs to know more :');
     const link = kleur.blue('https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme');
     console.log(`${text} ${link}`);
     console.log(gradient.teen('-------------------------------ENJOY BUILDING BRO----------------------------\n'))
