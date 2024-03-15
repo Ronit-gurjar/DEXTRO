@@ -173,7 +173,11 @@ inquirer
       }
     }
     console.log(gradient.teen('\n------------------------PROJECT SUCCESSFULLY CREATED------------------------'))
+    if(!repoUrl){
+    console.log(kleur.bgGreen().bold().red( "Created "+ kleur.yellow(projectName) +", with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.yellow(projectAuthor)));
+    }else{
     console.log(kleur.bgGreen().bold().red( "Created "+ kleur.yellow(projectName) +" on "+ repoUrl +" repo, with "+ frameworkChoice +" + "+ variant + style() + " for " + kleur.yellow(projectAuthor)));
+    }
     console.log(kleur.blue('Now just perform :'))
     console.log(`
     > cd ${projectName}
@@ -182,7 +186,7 @@ inquirer
     > npm run dev
     `)
     const text = kleur.bgGreen().bold().red('Read Docs to know more :');
-    const link = kleur.blue('https://github.com/Ronit-gurjar/React-Chrome-Extension-Boilerplate#readme');
+    const link = kleur.blue('https://github.com/Ronit-gurjar/DEXTRO#readme');
     console.log(`${text} ${link}`);
     console.log(gradient.teen('-------------------------------ENJOY BUILDING BRO----------------------------\n'))
   }
