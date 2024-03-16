@@ -32,6 +32,10 @@ module.exports = {
                         }
                      ],
                 test: /\.css?$/,
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource'
             }
         ]
     },
@@ -58,6 +62,7 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
+        assetModuleFilename: 'images/[hash][ext][query]'
     },
     optimization: {
         splitChunks:{
