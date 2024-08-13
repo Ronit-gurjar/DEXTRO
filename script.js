@@ -63,61 +63,6 @@ const QUESTIONS = [
   }
 ]
 
-// Create Package.Json for selected project   
-function createPackageJson(projectName, repoUrl, projectAuthor) {
-    const projectPath = path.join(CURR_DIR, projectName);
-    const react_ts_tailwind = {
-      "name": projectName,
-      "version": "1.0.0",
-      "description": "Simple Chrome extension",
-      "main": "popup.js",
-      "scripts": {
-        "dev": "webpack --watch --progress --config webpack.config.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-      },
-      "repository": {
-        "type": "git",
-        "url": repoUrl
-      },
-      "keywords": [
-        "React",
-        "Chrome-extension",
-        "Chrome-boilerplate"
-      ],
-      "author": projectAuthor,
-      "license": "ISC",
-      "bugs": {
-        "url": repoUrl+"/issues"
-      },
-      "homepage": repoUrl+"#readme",
-      "dependencies": {
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "ts-loader": "^9.4.4",
-        "typescript": "^5.1.6"
-      },
-      "devDependencies": {
-        "@types/chrome": "^0.0.242",
-        "@types/react": "^18.2.17",
-        "@types/react-dom": "^18.2.7",
-        "autoprefixer": "^10.4.14",
-        "copy-webpack-plugin": "^11.0.0",
-        "css-loader": "^6.8.1",
-        "html-webpack-plugin": "^5.5.3",
-        "postcss": "^8.4.27",
-        "postcss-loader": "^7.3.3",
-        "style-loader": "^3.3.3",
-        "tailwindcss": "^3.3.3",
-        "webpack": "^5.88.2",
-        "webpack-cli": "^5.1.4"
-      }
-    };
-    const packageJsonString = JSON.stringify(react_ts_tailwind, null, 2);
-    const packageJsonPath = projectPath + '/package.json';
-    fs.writeFileSync(packageJsonPath, packageJsonString);
-}
-
-
 inquirer
   .prompt(QUESTIONS)
   .then(answers => {
@@ -153,6 +98,114 @@ inquirer
           return;
       }
       }
+    
+        // Create Package.Json for selected project   
+    function createPackageJson(projectName, repoUrl, projectAuthor, combination) {
+      let targetPackage = ''
+      const projectPath = path.join(CURR_DIR, projectName);
+      const react_ts_tailwind = {
+        "name": projectName,
+        "version": "1.0.0",
+        "description": "Simple Chrome extension",
+        "main": "popup.js",
+        "scripts": {
+          "dev": "webpack --watch --progress --config webpack.config.js",
+          "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "repository": {
+          "type": "git",
+          "url": repoUrl
+        },
+        "keywords": [
+          "React",
+          "Chrome-extension",
+          "Chrome-boilerplate"
+        ],
+        "author": projectAuthor,
+        "license": "ISC",
+        "bugs": {
+          "url": repoUrl+"/issues"
+        },
+        "homepage": repoUrl+"#readme",
+        "dependencies": {
+          "react": "^18.2.0",
+          "react-dom": "^18.2.0",
+          "ts-loader": "^9.4.4",
+          "typescript": "^5.1.6"
+        },
+        "devDependencies": {
+          "@types/chrome": "^0.0.242",
+          "@types/react": "^18.2.17",
+          "@types/react-dom": "^18.2.7",
+          "autoprefixer": "^10.4.14",
+          "copy-webpack-plugin": "^11.0.0",
+          "css-loader": "^6.8.1",
+          "html-webpack-plugin": "^5.5.3",
+          "postcss": "^8.4.27",
+          "postcss-loader": "^7.3.3",
+          "style-loader": "^3.3.3",
+          "tailwindcss": "^3.3.3",
+          "webpack": "^5.88.2",
+          "webpack-cli": "^5.1.4"
+        }
+      };
+      const react_ts = {
+        "name": projectName,
+        "version": "1.0.0",
+        "description": "Simple Chrome extension",
+        "main": "popup.js",
+        "scripts": {
+          "dev": "webpack --watch --progress --config webpack.config.js",
+          "test": "echo \"Error: no test specified\" && exit 1"
+        },
+        "repository": {
+          "type": "git",
+          "url": repoUrl
+        },
+        "keywords": [
+          "React",
+          "Chrome-extension",
+          "Chrome-boilerplate"
+        ],
+        "author": projectAuthor,
+        "license": "ISC",
+        "bugs": {
+          "url": repoUrl+"/issues"
+        },
+        "homepage": repoUrl+"#readme",
+        "dependencies": {
+          "react": "^18.2.0",
+          "react-dom": "^18.2.0",
+          "ts-loader": "^9.4.4",
+          "typescript": "^5.1.6"
+        },
+        "devDependencies": {
+          "@types/chrome": "^0.0.242",
+          "@types/react": "^18.2.17",
+          "@types/react-dom": "^18.2.7",
+          "copy-webpack-plugin": "^11.0.0",
+          "css-loader": "^6.8.1",
+          "html-webpack-plugin": "^5.5.3",
+          "style-loader": "^3.3.3",
+          "webpack": "^5.88.2",
+          "webpack-cli": "^5.1.4"
+        }
+      };
+      switch (combination) {
+        case "React-Typescript-true":
+          targetPackage = react_ts_tailwind
+          break;
+        case "React-Typescript-false":
+          targetPackage = react_ts
+          break;
+        default:
+          console.log("project configuration not valid")
+          break;
+      }
+      const packageJsonString = JSON.stringify(targetPackage, null, 2);
+      const packageJsonPath = projectPath + '/package.json';
+      fs.writeFileSync(packageJsonPath, packageJsonString);
+    }
 
 
       const templatePath = `${__dirname}/templates/${projectChoice(combination)}`;
@@ -162,7 +215,7 @@ inquirer
     }else{
     fs.mkdirSync(`${CURR_DIR}/${projectName}`); // make directory with project name in cwd
     createDirectoryContents(templatePath, projectName); // copy contents of templatepath to projectName
-    createPackageJson(projectName, repoUrl, projectAuthor);
+    createPackageJson(projectName, repoUrl, projectAuthor, combination);
     
     //terminal OUTPUT
     function style(){
